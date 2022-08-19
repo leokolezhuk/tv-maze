@@ -15,7 +15,7 @@
     >
     </v-btn>
 
-    <div class="items-container" ref="container" @scroll.passive="onScroll">
+    <div class="items-container" ref="container" @scroll="onScroll">
       <slot></slot>
     </div>
   </div>
@@ -75,6 +75,7 @@ export default defineComponent({
         const totalWidth = singleItemWidth * children.length;
 
         this.currentIndex = Math.round(currentScroll / singleItemWidth);
+
         this.scrollToIndex(this.currentIndex);
         this.isPreviousAvailable = this.currentIndex > 0;
         this.isNextAvailable =

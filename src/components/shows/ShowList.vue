@@ -6,18 +6,22 @@
   </HorizontalList>
   <v-btn @click="$refs.showList.scrollToIndex(5)">Scroll to 5</v-btn>
   <v-btn @click="$refs.showList.scrollToIndex(0)">Scroll to start</v-btn>
+  <v-btn @click="$refs.showList.scrollToIndex(this.shows.length - 1)"
+    >Scroll to end</v-btn
+  >
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import ShowCard from "./ShowCard.vue";
 import HorizontalList from "../HorizontalList.vue";
+import Show from "@/models/Show";
 
 export default defineComponent({
   components: { ShowCard, HorizontalList },
   props: {
     shows: {
-      type: Array as PropType<Array<object>>,
+      type: Array as PropType<Array<Show>>,
       required: true,
     },
   },
