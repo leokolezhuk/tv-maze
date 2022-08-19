@@ -15,6 +15,12 @@ yarn serve
 yarn build
 ```
 
+### Serves the production build
+(run yarn build first)
+```
+yarn prod
+```
+
 ### Run your unit tests
 ```
 yarn test:unit
