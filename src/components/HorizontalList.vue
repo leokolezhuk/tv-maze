@@ -15,7 +15,7 @@
     >
     </v-btn>
 
-    <div class="items-container" ref="container" @scroll="onScroll">
+    <div class="horizontal-list-items" ref="container" @scroll="onScroll">
       <slot></slot>
     </div>
   </div>
@@ -34,6 +34,7 @@ export default defineComponent({
       isNextAvailable: false as boolean,
     };
   },
+
   mounted() {
     const observer = new MutationObserver(this.refresh);
     observer.observe(this.$refs.container as Element, {
@@ -43,10 +44,12 @@ export default defineComponent({
     this.observer = observer;
     this.onScroll();
   },
+
   beforeUnmount() {
     this.observer?.disconnect();
     clearTimeout(this.scrollUpdateTimeout);
   },
+
   methods: {
     onScroll() {
       clearTimeout(this.scrollUpdateTimeout);
@@ -97,7 +100,7 @@ export default defineComponent({
   position: relative;
   display: flex;
 
-  .items-container {
+  .horizontal-list-items {
     @extend .no-scrollbar;
     display: flex;
     width: 100%;
@@ -121,8 +124,6 @@ export default defineComponent({
     align-self: center;
     z-index: 1;
     display: flex;
-    align-items: center;
-    cursor: pointer;
 
     &.horizontal-list-btn-previous {
       left: 15px;
@@ -132,13 +133,13 @@ export default defineComponent({
       right: 15px;
     }
   }
+}
 
-  .no-scrollbar {
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+.no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
   }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 </style>

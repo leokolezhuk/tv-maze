@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="visible" transition="expand-x-transition">
+  <v-dialog v-model="visible" transition="scale-transition">
     <v-card class="show-modal-card mx-auto">
       <div class="d-flex flex-column flex-md-row">
         <v-img
@@ -27,11 +27,9 @@
             <show-status-chip :show="show" class="mr-1"></show-status-chip>
             <show-runtime-chip :show="show"></show-runtime-chip>
           </v-card-text>
-
           <v-card-text>
             {{ loremIpsum }}
           </v-card-text>
-
           <v-card-actions class="d-flex flex-column flex-sm-row align-start">
             <v-btn
               class="mx-0 mr-sm-2"
@@ -71,14 +69,18 @@ import loremIpsum from "@/helpers/loremIpsum";
 
 export default defineComponent({
   name: "ShowDetailsModal",
+
   components: { ShowRuntimeChip, ShowStatusChip, ShowImagePlaceholder },
+
   extends: BaseModal,
+
   props: {
     show: {
       type: Object as PropType<Show>,
       required: true,
     },
   },
+
   data() {
     return {
       display: useDisplay(),
@@ -86,6 +88,7 @@ export default defineComponent({
       loremIpsum,
     };
   },
+
   methods: {
     goToOfficialWebsite() {
       const websiteLink = this.show.url;
@@ -95,9 +98,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.show-modal-card {
-  // width: 500px;
-}
-</style>

@@ -19,12 +19,14 @@ import Show from "@/models/Show";
 
 export default defineComponent({
   components: { ShowCard, HorizontalList },
+
   props: {
     shows: {
       type: Array as PropType<Array<Show>>,
       required: true,
     },
   },
+
   methods: {
     scrollToIndex(i: number): void {
       (this.$refs.showList as typeof HorizontalList).scrollToIndex(i);
