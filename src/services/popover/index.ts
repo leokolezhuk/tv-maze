@@ -1,5 +1,5 @@
 import { Component } from "vue";
-import EventBus from "@/services/EventBus";
+import EventBus from "@/helpers/EventBus";
 
 const popoverServiceEventBus = new EventBus();
 
