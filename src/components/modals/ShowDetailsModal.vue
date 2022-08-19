@@ -1,11 +1,9 @@
 <template>
-  <v-dialog v-model="visible">
-    <v-card class="mx-auto">
+  <v-dialog v-model="visible" transition="expand-x-transition">
+    <v-card class="show-modal-card mx-auto">
       <div class="d-flex flex-column flex-md-row">
         <v-img
-          min-width="200"
-          min-height="200"
-          cover
+          max-height="70vh"
           class="white--text align-end"
           gradient="to bottom, rgba(0, 0, 0, 0.1), rgba(11, 10, 10, 0.9)"
           :src="show?.image.original"
@@ -34,17 +32,23 @@
             {{ loremIpsum }}
           </v-card-text>
 
-          <v-card-actions class="d-flex flex-column flex-sm-row">
-            <v-btn prepend-icon="mdi-earth" @click="goToOfficialWebsite"
-              >Official website</v-btn
+          <v-card-actions class="d-flex flex-column flex-sm-row align-start">
+            <v-btn
+              class="mx-0 mr-sm-2"
+              prepend-icon="mdi-earth"
+              @click="goToOfficialWebsite"
             >
-            <v-btn prepend-icon="mdi-heart">Add to favourites</v-btn>
-            <v-btn prepend-icon="mdi-share">Share</v-btn>
+              Official website
+            </v-btn>
+            <v-btn class="mx-0 mr-sm-2" prepend-icon="mdi-heart">
+              Add to favourites
+            </v-btn>
+            <v-btn class="mx-0 mr-sm-2" prepend-icon="mdi-share"> Share </v-btn>
           </v-card-actions>
         </div>
       </div>
       <v-btn
-        position="absolute"
+        position="fixed"
         location="top right"
         icon="mdi-close"
         class="ma-2"
@@ -91,3 +95,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.show-modal-card {
+  // width: 500px;
+}
+</style>

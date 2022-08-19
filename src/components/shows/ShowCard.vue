@@ -10,15 +10,6 @@
       <v-card-title class="text-white" v-text="show.name"></v-card-title>
       <template v-slot:placeholder>
         <ShowImagePlaceholder />
-        <!-- <v-row class="fill-height ma-0" align="center" justify="center">
-          <v-progress-circular
-            indeterminate
-            color="grey lighten-5 pa-8"
-            width="2"
-          >
-            <v-icon size="x-large"> mdi-movie </v-icon>
-          </v-progress-circular>
-        </v-row> -->
       </template>
     </v-img>
     <div class="show-card-actions pa-1 d-flex">
