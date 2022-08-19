@@ -15,7 +15,11 @@
     >
     </v-btn>
 
-    <div class="horizontal-list-items" ref="container" @scroll="onScroll">
+    <div
+      class="horizontal-list-items"
+      ref="container"
+      @scroll.passive="onScroll"
+    >
       <slot></slot>
     </div>
   </div>
@@ -77,10 +81,8 @@ export default defineComponent({
         const singleItemWidth = children[0].scrollWidth;
         const totalWidth = singleItemWidth * children.length;
 
-        this.currentIndex = Math.round(currentScroll / singleItemWidth);
-
-        this.scrollToIndex(this.currentIndex);
-        this.isPreviousAvailable = this.currentIndex > 0;
+        this.currentIndex = Math.ceil(currentScroll / singleItemWidth);
+        this.isPreviousAvailable = currentScroll > 0;
         this.isNextAvailable =
           currentScroll + container.clientWidth < totalWidth;
       });

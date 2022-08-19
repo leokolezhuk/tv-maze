@@ -1,9 +1,10 @@
 <template>
-  <v-card>
+  <v-card class="search-box">
     <v-text-field
       clearable
       single-line
       hide-details
+      placeholder="Search your favourite show"
       v-model="query"
       prepend-inner-icon="mdi-magnify"
       @change="notifyChange"
@@ -35,3 +36,12 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss">
+.search-box {
+  input {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+</style>

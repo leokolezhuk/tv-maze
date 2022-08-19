@@ -1,12 +1,15 @@
 <template>
   <v-dialog v-model="visible" transition="scale-transition">
-    <v-card class="show-modal-card mx-auto">
+    <v-card
+      class="show-modal-card mx-auto"
+      :class="display.smAndDown ? 'modal-full-width' : 'modal-fixed-width'"
+    >
       <div class="d-flex flex-column flex-md-row">
         <v-img
           max-height="70vh"
           class="white--text align-end"
           gradient="to bottom, rgba(0, 0, 0, 0.1), rgba(11, 10, 10, 0.9)"
-          :src="show?.image.original"
+          :src="show.image?.original"
         >
           <v-card-title class="text-white">{{ show.name }} </v-card-title>
           <v-card-subtitle class="text-white pb-3">
@@ -62,8 +65,8 @@ import Show from "@/models/Show";
 import { defineComponent, PropType } from "vue";
 import { useDisplay } from "vuetify";
 import BaseModal from "./BaseModal.vue";
-import ShowRuntimeChip from "@/components/ShowRuntimeChip.vue";
-import ShowStatusChip from "@/components/ShowStatusChip.vue";
+import ShowRuntimeChip from "@/components/shows/ShowRuntimeChip.vue";
+import ShowStatusChip from "@/components/shows/ShowStatusChip.vue";
 import ShowImagePlaceholder from "@/components/shows/ShowImagePlaceholder.vue";
 import loremIpsum from "@/helpers/loremIpsum";
 
@@ -98,3 +101,13 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.modal-full-width {
+  width: 100%;
+}
+
+.modal-fixed-width {
+  width: 900px;
+}
+</style>

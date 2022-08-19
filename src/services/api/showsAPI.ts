@@ -6,7 +6,7 @@ class ShowsAPI extends APIEndpoint {
     super("https://api.tvmaze.com/");
   }
 
-  public async search(query: string): Promise<Array<Show> | null> {
+  public async search(query: string): Promise<Array<Show>> {
     const response = await this.get<Array<{ show: Show }> | null>(
       `search/shows?q=${query}`
     );
@@ -16,8 +16,9 @@ class ShowsAPI extends APIEndpoint {
     return response.map((s) => s.show);
   }
 
-  public async getAll(page = 0): Promise<Array<Show> | null> {
-    return await this.get<Array<Show>>(`shows?page=${page}`);
+  public async getAll(page = 0): Promise<Array<Show>> {
+    const shows = await this.get<Array<Show> | null>(`shows?page=${page}`);
+    return shows ?? [];
   }
 
   public async getShow(showId: string): Promise<Show | null> {
