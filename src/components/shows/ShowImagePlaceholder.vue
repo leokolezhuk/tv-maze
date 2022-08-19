@@ -6,6 +6,14 @@
   </v-row>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "ShowImagePlaceholder",
+});
+</script>
+
 <style lang="scss" scoped>
 .v-icon {
   width: 150px;

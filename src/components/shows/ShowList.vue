@@ -18,6 +18,8 @@ import HorizontalList from "../HorizontalList.vue";
 import Show from "@/models/Show";
 
 export default defineComponent({
+  name: "ShowList",
+
   components: { ShowCard, HorizontalList },
 
   props: {

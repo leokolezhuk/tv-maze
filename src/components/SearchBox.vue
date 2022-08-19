@@ -16,12 +16,18 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  emits: ["changed"],
+  name: "SearchBox",
+
+  emits: {
+    changed: ({ query: String }) => true,
+  },
+
   data() {
     return {
       query: "" as string,
     };
   },
+
   methods: {
     notifyChange() {
       this.$emit("changed", { query: this.query });

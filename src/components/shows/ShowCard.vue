@@ -18,7 +18,7 @@
           :model-value="isHovering"
           contained
           scrim="grey"
-          class="show-card-overlay align-center justify-center"
+          class="align-center justify-center"
         >
           <v-chip
             variant="outlined"
@@ -43,6 +43,8 @@ import ShowImagePlaceholder from "@/components/shows/ShowImagePlaceholder.vue";
 import showsAPI from "@/services/api/showsAPI";
 
 export default defineComponent({
+  name: "ShowCard",
+
   components: { ShowImagePlaceholder },
 
   props: {
@@ -60,9 +62,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.show-card-overlay {
-  cursor: crosshair;
-}
-</style>

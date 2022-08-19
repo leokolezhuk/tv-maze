@@ -8,6 +8,7 @@ import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "ShowStatusChip",
+
   props: {
     show: { type: Object as PropType<Show>, required: true },
   },

@@ -10,9 +10,11 @@ import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "ShowRuntimeChip",
+
   props: {
     show: { type: Object as PropType<Show>, required: true },
   },
+
   computed: {
     premieredDate(): string {
       return this.show.premiered ?? "Unknown";
