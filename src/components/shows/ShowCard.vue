@@ -1,32 +1,40 @@
 <template>
-  <div>
-    <v-hover v-slot="{ isHovering, props }">
-      <v-card width="250px" height="250px" v-bind="props" @click="showDetails">
-        <v-img
-          :src="show.image?.medium"
-          class="white--text align-end"
-          height="250px"
-          cover
-          gradient="to bottom, rgba(0, 0, 0, 0.1), rgba(11, 10, 10, 0.9)"
-        >
-          <v-card-title class="text-white" v-text="show.name"></v-card-title>
-          <template v-slot:placeholder>
-            <ShowImagePlaceholder />
-          </template>
-        </v-img>
+  <div
+    @mouseover="isHovering = true"
+    @mouseout="isHovering = false"
+    data-test-id="showCardContainer"
+  >
+    <v-card
+      width="250px"
+      height="250px"
+      @click="showDetails"
+      data-test-id="showCard"
+    >
+      <v-img
+        :src="show.image?.medium"
+        class="white--text align-end"
+        height="250px"
+        cover
+        gradient="to bottom, rgba(0, 0, 0, 0.1), rgba(11, 10, 10, 0.9)"
+        data-test-id="showCardImage"
+      >
+        <v-card-title class="text-white" v-text="show.name"></v-card-title>
+        <template v-slot:placeholder>
+          <ShowImagePlaceholder />
+        </template>
+      </v-img>
 
-        <ShowCardOverlay v-show="isHovering">
-          <v-chip
-            class="white-text"
-            variant="outlined"
-            color="grey-lighten-1"
-            @click="showDetails"
-          >
-            Show details
-          </v-chip>
-        </ShowCardOverlay>
-      </v-card>
-    </v-hover>
+      <ShowCardOverlay v-show="isHovering" data-test-id="showCardOverlay">
+        <v-chip
+          class="white-text"
+          variant="outlined"
+          color="grey-lighten-1"
+          @click="showDetails"
+        >
+          Show details
+        </v-chip>
+      </ShowCardOverlay>
+    </v-card>
   </div>
 </template>
 
@@ -37,7 +45,6 @@ import ShowDetailsModalVue from "../modals/ShowDetailsModal.vue";
 import Show from "@/models/Show";
 import ShowImagePlaceholder from "@/components/shows/ShowImagePlaceholder.vue";
 import ShowCardOverlay from "@/components/shows/ShowCardOverlay.vue";
-import showsAPI from "@/services/api/showsAPI";
 
 export default defineComponent({
   name: "ShowCard",
@@ -51,13 +58,16 @@ export default defineComponent({
     },
   },
 
+  data() {
+    return {
+      isHovering: false as boolean,
+    };
+  },
+
   methods: {
     showDetails() {
-      // const detailedShow = await showsAPI.getShow(this.show.id);
       PopoverService.open(ShowDetailsModalVue, { show: this.show });
     },
   },
 });
 </script>
-
-<style lang="scss" scoped></style>
