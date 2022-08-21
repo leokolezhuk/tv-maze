@@ -11,10 +11,3 @@ export default defineComponent({
   name: "ShowImagePlaceholder",
 });
 </script>
-
-<style lang="scss" scoped>
-.v-icon {
-  width: 150px;
-  height: 150px;
-}
-</style>

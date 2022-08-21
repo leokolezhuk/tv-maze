@@ -16,8 +16,6 @@
                   :shows="groupShows"
                 ></ShowGenreGroup>
               </div>
-
-              <!-- <ShowList :shows="shows" /> -->
             </div>
             <div v-else class="my-12">
               <v-progress-circular :size="60" color="primary" indeterminate />
@@ -34,7 +32,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-// import ShowList from "@/components/shows/ShowList.vue";
 import showsAPI from "@/services/api/showsAPI";
 import SearchBox from "@/components/SearchBox.vue";
 import ShowGenreGroup from "@/components/shows/ShowGenreGroup.vue";
@@ -78,18 +75,16 @@ export default defineComponent({
       });
     },
     groupShowsByGenre(shows: Array<Show>) {
-      const genreGroups: Partial<Record<string, Array<Show>>> = {};
+      const genreGroups: Record<string, Array<Show>> = {};
 
-      shows.forEach((show) => {
-        // show.genres?.forEach((genre: string) => {
+      shows.forEach((show: Show) => {
         const genre = show.genres?.[0];
         if (!genre) return;
         if (genreGroups[genre] !== undefined) {
-          genreGroups[genre]!.push(show);
+          genreGroups[genre].push(show);
         } else {
           genreGroups[genre] = [show];
         }
-        // });
       });
 
       return genreGroups;

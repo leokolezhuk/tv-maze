@@ -4,11 +4,6 @@
       <ShowCard class="mr-2" :show="show" />
     </section>
   </HorizontalList>
-  <!-- <v-btn @click="$refs.showList.scrollToIndex(5)">Scroll to 5</v-btn>
-  <v-btn @click="$refs.showList.scrollToIndex(0)">Scroll to start</v-btn>
-  <v-btn @click="$refs.showList.scrollToIndex(this.shows.length - 1)"
-    >Scroll to end</v-btn
-  > -->
 </template>
 
 <script lang="ts">

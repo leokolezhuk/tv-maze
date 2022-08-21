@@ -1,9 +1,10 @@
+import { TV_MAZE_API_URL } from "@/config";
 import Show from "@/models/Show";
 import APIEndpoint from "./APIEndpoint";
 
 class ShowsAPI extends APIEndpoint {
   constructor() {
-    super("https://api.tvmaze.com/");
+    super(TV_MAZE_API_URL);
   }
 
   public async search(query: string): Promise<Array<Show>> {
@@ -19,10 +20,6 @@ class ShowsAPI extends APIEndpoint {
   public async getAll(page = 0): Promise<Array<Show>> {
     const shows = await this.get<Array<Show> | null>(`shows?page=${page}`);
     return shows ?? [];
-  }
-
-  public async getShow(showId: string): Promise<Show | null> {
-    return await this.get<Show>(`shows/${showId}?embed[]=cast`);
   }
 }
 

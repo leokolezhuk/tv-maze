@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import PopoverRoot from "@/components/PopoverRoot.vue";
+import PopoverRoot from "@/components/modals/PopoverRoot.vue";
 
 export default defineComponent({
   name: "App",

@@ -9,7 +9,7 @@ export default class Show {
   genres!: Array<string>;
   status!: string;
   runtime!: number;
-  averageRuntime!: number | undefined;
+  averageRuntime: number | undefined;
   premiered: string | undefined;
   ended: string | undefined;
   image: ShowImage | undefined;

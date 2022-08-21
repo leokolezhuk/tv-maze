@@ -20,6 +20,7 @@ export default defineComponent({
   name: "SearchBox",
 
   emits: {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     changed: ({ query: String }) => true,
   },
 
