@@ -40,6 +40,8 @@ export default defineComponent({
   },
 
   mounted() {
+    // Observe changes to the list of children in the component slot.
+    // Handle such changes by refreshing the list state.
     const observer = new MutationObserver(this.refresh);
     observer.observe(this.$refs.container as Element, {
       childList: true,
@@ -67,7 +69,7 @@ export default defineComponent({
       const container = this.$refs.container as Element;
       const children = container.children;
 
-      if (children[i]) {
+      if (children?.[i]) {
         const rect = children[i].getBoundingClientRect();
         const left = rect.left - container.getBoundingClientRect().left;
         this.scrollToX(container.scrollLeft + left);
@@ -81,10 +83,11 @@ export default defineComponent({
         const singleItemWidth = children[0].scrollWidth;
         const totalWidth = singleItemWidth * children.length;
 
-        this.currentIndex = Math.ceil(currentScroll / singleItemWidth);
+        this.currentIndex = Math.round(currentScroll / singleItemWidth);
         this.isPreviousAvailable = currentScroll > 0;
+        const roundingEpsilon = 0.5;
         this.isNextAvailable =
-          currentScroll + container.clientWidth < totalWidth;
+          currentScroll + container.clientWidth + roundingEpsilon < totalWidth;
       });
     },
     scrollToPrevious() {
